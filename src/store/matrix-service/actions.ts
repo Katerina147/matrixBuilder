@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
+import { generateMatrix } from 'utils/helpers/matrix';
 import { MATRIX_ACTION_TYPES } from 'utils/enums/matrix-action-types';
-import { generateMatrix } from 'utils/helpers';
 
 export const createMatrix =
     (columns: number, rows: number) => (dispatch: Dispatch) => {
