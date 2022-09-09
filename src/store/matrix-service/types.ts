@@ -1,5 +1,5 @@
 import { MATRIX_ACTION_TYPES } from 'utils/enums/matrix-action-types';
-import { MatrixData } from 'utils/types/matrix.interfaces';
+import { MatrixData } from 'utils/types';
 
 interface ICreteMatrix {
     type: MATRIX_ACTION_TYPES.CREATE;

@@ -2,7 +2,7 @@ import { FC, ChangeEvent } from 'react';
 import { TextField, TextFieldProps } from '@mui/material';
 
 type CustomInputProps = Omit<TextFieldProps, 'onChange' | 'value'> & {
-    onChange: (value: string | number) => void | any;
+    onChange: (value: string | number) => void;
     value: string | number;
 };
 
@@ -14,7 +14,8 @@ export const CustomInput: FC<CustomInputProps> = ({
     const handleChange = (
         event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
     ): void => {
-        onChange(event.target.value);
+        const { value } = event.target;
+        onChange(rest?.type === 'number' ? +value : value);
     };
 
     return (

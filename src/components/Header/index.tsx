@@ -1,9 +1,8 @@
 import { FC } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Box, Container } from '@mui/system';
 import { makeStyles } from '@mui/styles';
 import { Grid } from '@mui/material';
-import { CustomTypography, CustomButton, CustomInput } from 'components/shared';
-import { useDispatch, useSelector } from 'react-redux';
 import {
     createMatrix,
     setCells,
@@ -15,9 +14,10 @@ import {
     getColumnsSelector,
     getRowsSelector
 } from 'store/matrix-service/selectors';
-import { MUI_STYLES } from './style';
+import { CustomTypography, CustomButton, CustomInput } from 'components/shared';
+import { MUI_HEADER_STYLES } from './styles';
 
-const useStyles = makeStyles(MUI_STYLES);
+const useStyles = makeStyles(MUI_HEADER_STYLES);
 
 export const Header: FC = () => {
     const classes = useStyles();
@@ -130,7 +130,7 @@ export const Header: FC = () => {
                 </Container>
                 <CustomButton
                     className={classes.customButton}
-                    label="Matrix Builder"
+                    label="Create matrix"
                     onClick={handleCreateMatrix}
                 />
             </Box>

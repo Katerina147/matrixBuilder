@@ -1,5 +1,5 @@
 import { MATRIX_ACTION_TYPES } from 'utils/enums/matrix-action-types';
-import { IMatrixReducer } from 'utils/types/matrix-reducer.interface';
+import { IMatrixReducer } from 'utils/types';
 import { ActionTypes } from './types';
 
 const initialState: IMatrixReducer = {

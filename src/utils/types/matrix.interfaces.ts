@@ -1,6 +1,6 @@
 export interface IMatrixParameters {
-    rows: number;
     columns: number;
+    rows: number;
     cells: number;
 }
 
