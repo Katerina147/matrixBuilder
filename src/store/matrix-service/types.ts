@@ -21,8 +21,14 @@ interface ISetMatrixCells {
     payload: number;
 }
 
+interface ICellIncrement {
+    type: MATRIX_ACTION_TYPES.CELL_INCREMENT;
+    payload: string;
+}
+
 export type ActionTypes =
     | ICreteMatrix
     | ISetMatrixColumns
     | ISetMatrixRows
-    | ISetMatrixCells;
+    | ISetMatrixCells
+    | ICellIncrement;

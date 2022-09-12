@@ -25,3 +25,8 @@ export const setCells = (cells: number) => ({
     type: MATRIX_ACTION_TYPES.SET_MATRIX_CELLS,
     payload: cells
 });
+
+export const cellIncrement = (id: string) => ({
+    type: MATRIX_ACTION_TYPES.CELL_INCREMENT,
+    payload: id
+});

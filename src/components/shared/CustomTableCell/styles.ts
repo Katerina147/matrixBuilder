@@ -4,7 +4,9 @@ export const MUI_MATRIX_TABLECELL_STYLES = {
             fontSize: '20px',
             fontWeight: 'bold',
             borderRadius: '10px',
-            borderBottom: 'none'
+            borderBottom: 'none',
+            cursor: 'pointer',
+            textAlign: 'center'
         }
     }
 };
