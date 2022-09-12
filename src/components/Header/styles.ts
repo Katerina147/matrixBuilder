@@ -2,11 +2,12 @@ import { theme } from 'utils/theme/matrix-theme';
 
 export const MUI_HEADER_STYLES = {
     boxWrapper: {
-        backgroundColor: theme.palette.primary
+        backgroundColor: theme.palette.primary,
+        padding: '20px'
     },
     customButton: {
         '&.MuiButton-root': {
-            margin: ' 0 auto',
+            margin: '0px auto',
             display: 'block',
             padding: '0 30px',
             border: 0,

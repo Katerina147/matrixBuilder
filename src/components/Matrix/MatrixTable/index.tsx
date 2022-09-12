@@ -7,11 +7,12 @@ import {
     getColumnsSelector,
     getMartrixSelector
 } from 'store/matrix-service/selectors';
-import { CustomTable, CustomTableCell } from 'components/shared';
 import { MatrixTableRow } from 'components/Matrix/MatrixTableRow';
-import { calculateAverageValues, getTableHeadings } from 'utils/helpers';
+import { CustomTable, CustomTableCell } from 'components/shared';
 import { MUI_ROW_STYLE } from 'utils/constans/style/table-row';
+import { calculateAverageValues } from 'utils/helpers/matrix';
 import { MatrixData, MatrixRow } from 'utils/types';
+import { getTableHeadings } from 'utils/helpers';
 import { MUI_MATRIX_TABLE_STYLES } from './styles';
 
 const useStyles = makeStyles({

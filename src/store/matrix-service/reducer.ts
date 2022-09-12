@@ -1,5 +1,5 @@
 import { MATRIX_ACTION_TYPES } from 'utils/enums/matrix-action-types';
-import { IMatrixReducer } from 'utils/types';
+import { IMatrixCell, IMatrixReducer, MatrixRow } from 'utils/types';
 import { ActionTypes } from './types';
 
 const initialState: IMatrixReducer = {
@@ -50,6 +50,23 @@ const matrixReducer = (
                 }
             };
 
+        case MATRIX_ACTION_TYPES.CELL_INCREMENT:
+            return {
+                ...state,
+                matrix: state.matrix.map((rowIncrement: MatrixRow) =>
+                    rowIncrement.map((cellIncrement: IMatrixCell) =>
+                        cellIncrement.id === payload
+                            ? {
+                                  ...cellIncrement,
+                                  amount:
+                                      cellIncrement.amount < 999
+                                          ? cellIncrement.amount + 1
+                                          : cellIncrement.amount
+                              }
+                            : cellIncrement
+                    )
+                )
+            };
         default:
             return state;
     }
