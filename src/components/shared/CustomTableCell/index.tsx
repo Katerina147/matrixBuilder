@@ -8,6 +8,8 @@ interface CustomTableCellProps {
     value?: string | number;
     className?: string;
     onClick?: () => void;
+    onMouseEnter?: () => void;
+    onMouseLeave?: () => void;
 }
 
 const useStyles = makeStyles(MUI_MATRIX_TABLECELL_STYLES);
@@ -15,13 +17,17 @@ const useStyles = makeStyles(MUI_MATRIX_TABLECELL_STYLES);
 export const CustomTableCell: FC<CustomTableCellProps> = ({
     value,
     className,
-    onClick
+    onClick,
+    onMouseEnter,
+    onMouseLeave
 }) => {
     const classes = useStyles();
     return (
         <TableCell
             className={clsx(classes.customTableCell, className && className)}
             onClick={onClick}
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
         >
             {value}
         </TableCell>

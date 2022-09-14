@@ -24,7 +24,7 @@ export const MUI_HEADER_STYLES = {
         '&.MuiTypography-root': {
             textAlign: 'center',
             fontWeight: 'bold',
-            color: '#f5f827'
+            color: theme.palette.cellYellow
         }
     },
     content: {
@@ -34,7 +34,7 @@ export const MUI_HEADER_STYLES = {
     },
     headerParagraph: {
         '&.MuiTypography-body1': {
-            color: '#ffffff',
+            color: theme.palette.mainWhite,
             fontWeight: 'bold'
         }
     },

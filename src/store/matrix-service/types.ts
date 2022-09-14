@@ -22,8 +22,18 @@ interface ISetMatrixCells {
 }
 
 interface ICellIncrement {
-    type: MATRIX_ACTION_TYPES.CELL_INCREMENT;
+    type: MATRIX_ACTION_TYPES.INCREMENT_CELL;
     payload: string;
+}
+
+interface INearestSell {
+    type: MATRIX_ACTION_TYPES.GET_NEAREST_CELLS;
+    payload: { id: string; amount: number };
+}
+
+interface INearestSellClear {
+    type: MATRIX_ACTION_TYPES.CLEAR_NEAREST_CELLS;
+    payload: undefined;
 }
 
 export type ActionTypes =
@@ -31,4 +41,6 @@ export type ActionTypes =
     | ISetMatrixColumns
     | ISetMatrixRows
     | ISetMatrixCells
-    | ICellIncrement;
+    | ICellIncrement
+    | INearestSell
+    | INearestSellClear;

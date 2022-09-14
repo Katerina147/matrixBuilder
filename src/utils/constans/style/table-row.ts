@@ -18,7 +18,12 @@ export const MUI_ROW_STYLE = {
                 backgroundColor: theme.palette.secondary,
                 fontWeight: 'bold',
                 borderRadius: '10px',
-                borderBottom: 'none'
+                borderBottom: 'none',
+                cursor: 'pointer'
+            },
+            '&:hover': {
+                backgroundColor: theme.palette.cellHover,
+                color: 'white'
             }
         }
     }

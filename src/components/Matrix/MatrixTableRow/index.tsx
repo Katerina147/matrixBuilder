@@ -7,7 +7,11 @@ import ClearIcon from '@mui/icons-material/Clear';
 import { IMatrixCell, MatrixRow } from 'utils/types/matrix.interfaces';
 import { CustomButtonIcon } from 'components/shared/CustomButtonIcon';
 import { MUI_ROW_STYLE } from 'utils/constans/style/table-row';
-import { cellIncrement } from 'store/matrix-service/actions';
+import {
+    cellIncrement,
+    getNearestCell,
+    clearNearestCell
+} from 'store/matrix-service/actions';
 import { CustomTableCell } from 'components/shared';
 import { MUI_MATRIX_BODY_STYLES } from './styles';
 
@@ -44,12 +48,17 @@ export const MatrixTableRow: FC<MatrixTableRowProps> = ({
             {data.map((cell: IMatrixCell) => (
                 <CustomTableCell
                     className={classNames(
-                        classes.cellBlue,
-                        cellClassName && cellClassName
+                        cell.isNearest
+                            ? classes.nearestCell
+                            : cellClassName || classes.cellBlue
                     )}
                     key={cell.id}
                     value={cell.amount}
                     onClick={() => dispatch(cellIncrement(cell.id))}
+                    onMouseEnter={() =>
+                        dispatch(getNearestCell(cell.id, cell.amount))
+                    }
+                    onMouseLeave={() => dispatch(clearNearestCell())}
                 />
             ))}
             <CustomTableCell
