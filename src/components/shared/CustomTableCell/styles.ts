@@ -5,7 +5,6 @@ export const MUI_MATRIX_TABLECELL_STYLES = {
             fontWeight: 'bold',
             borderRadius: '10px',
             borderBottom: 'none',
-            cursor: 'pointer',
             textAlign: 'center'
         }
     }

@@ -1,5 +1,6 @@
 import { MATRIX_ACTION_TYPES } from 'utils/enums/matrix-action-types';
 import { IMatrixCell, IMatrixReducer, MatrixRow } from 'utils/types';
+import { findNearestCells } from 'utils/helpers';
 import { ActionTypes } from './types';
 
 const initialState: IMatrixReducer = {
@@ -50,7 +51,7 @@ const matrixReducer = (
                 }
             };
 
-        case MATRIX_ACTION_TYPES.CELL_INCREMENT:
+        case MATRIX_ACTION_TYPES.INCREMENT_CELL:
             return {
                 ...state,
                 matrix: state.matrix.map((rowIncrement: MatrixRow) =>
@@ -65,6 +66,37 @@ const matrixReducer = (
                               }
                             : cellIncrement
                     )
+                )
+            };
+
+        case MATRIX_ACTION_TYPES.GET_NEAREST_CELLS: {
+            const nearestCells = findNearestCells(
+                state.matrix,
+                payload.id,
+                payload.amount,
+                state.matrixParameters.cells
+            );
+            return {
+                ...state,
+                matrix: state.matrix.map((row: MatrixRow) =>
+                    row.map((cell: IMatrixCell) => ({
+                        ...cell,
+                        isNearest: nearestCells.some(
+                            (item: IMatrixCell) => item.id === cell.id
+                        )
+                    }))
+                )
+            };
+        }
+
+        case MATRIX_ACTION_TYPES.CLEAR_NEAREST_CELLS:
+            return {
+                ...state,
+                matrix: state.matrix.map((row: MatrixRow) =>
+                    row.map((cell: IMatrixCell) => ({
+                        ...cell,
+                        isNearest: false
+                    }))
                 )
             };
         default:

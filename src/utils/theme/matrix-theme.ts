@@ -5,6 +5,8 @@ export const theme = createTheme({
     palette: {
         primary: MATRIX_COLORS.mainColor,
         secondary: MATRIX_COLORS.ligthBlue,
-        mainWhite: MATRIX_COLORS.white
+        mainWhite: MATRIX_COLORS.white,
+        cellHover: MATRIX_COLORS.cellHover,
+        cellYellow: MATRIX_COLORS.cellYellow
     }
 });

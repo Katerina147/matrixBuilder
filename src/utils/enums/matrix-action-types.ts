@@ -3,5 +3,7 @@ export enum MATRIX_ACTION_TYPES {
     SET_MATRIX_COLUMNS = '[MATRIX] SetColumns',
     SET_MATRIX_ROWS = '[MATRIX] SetRows',
     SET_MATRIX_CELLS = '[MATRIX] SetCells',
-    CELL_INCREMENT = '[MATRIX] СellIncrement'
+    INCREMENT_CELL = '[MATRIX] IncrementCell',
+    GET_NEAREST_CELLS = '[MATRIX] GetNearestCells',
+    CLEAR_NEAREST_CELLS = '[MATRIX] ClearNearestCells'
 }
