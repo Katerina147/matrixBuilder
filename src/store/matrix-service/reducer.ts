@@ -1,6 +1,6 @@
 import { MATRIX_ACTION_TYPES } from 'utils/enums/matrix-action-types';
 import { IMatrixCell, IMatrixReducer, MatrixRow } from 'utils/types';
-import { findNearestCells } from 'utils/helpers';
+import { findNearestCells, generateMatrixRow } from 'utils/helpers';
 import { ActionTypes } from './types';
 
 const initialState: IMatrixReducer = {
@@ -21,25 +21,12 @@ const matrixReducer = (
         case MATRIX_ACTION_TYPES.CREATE:
             return {
                 ...state,
-                matrix: payload
-            };
-
-        case MATRIX_ACTION_TYPES.SET_MATRIX_COLUMNS:
-            return {
-                ...state,
                 matrixParameters: {
                     ...state.matrixParameters,
-                    columns: payload
-                }
-            };
-
-        case MATRIX_ACTION_TYPES.SET_MATRIX_ROWS:
-            return {
-                ...state,
-                matrixParameters: {
-                    ...state.matrixParameters,
-                    rows: payload
-                }
+                    columns: payload.columns,
+                    rows: payload.rows
+                },
+                matrix: payload.matrix
             };
 
         case MATRIX_ACTION_TYPES.SET_MATRIX_CELLS:
@@ -99,6 +86,27 @@ const matrixReducer = (
                     }))
                 )
             };
+
+        case MATRIX_ACTION_TYPES.ADD_MATRIX_ROW: {
+            const matrix: MatrixRow[] = [
+                ...state.matrix,
+                generateMatrixRow(payload)
+            ];
+            return {
+                ...state,
+                matrix
+            };
+        }
+
+        case MATRIX_ACTION_TYPES.DELETE_MATRIX_ROW: {
+            return {
+                ...state,
+                matrix: state.matrix.filter(
+                    (_row: MatrixRow, index: number) => index !== payload
+                )
+            };
+        }
+
         default:
             return state;
     }

@@ -4,12 +4,12 @@ import { ThemeProvider } from '@mui/styles';
 import { getMartrixSelector } from 'store/matrix-service/selectors';
 import { MatrixTable } from 'components/Matrix';
 import { Header } from 'components/Header';
-import { MatrixData } from 'utils/types';
+import { MatrixRow } from 'utils/types';
 import { theme } from 'utils/theme/matrix-theme';
 import 'App.css';
 
 const App: FC = () => {
-    const matrix: MatrixData = useSelector(getMartrixSelector);
+    const matrix: MatrixRow[] = useSelector(getMartrixSelector);
 
     return (
         <ThemeProvider theme={theme}>

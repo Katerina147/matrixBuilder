@@ -16,6 +16,7 @@ export const MUI_ROW_STYLE = {
             '&.MuiTableCell-root': {
                 fontSize: '20px',
                 backgroundColor: theme.palette.secondary,
+                color: theme.palette.cellTextColor,
                 fontWeight: 'bold',
                 borderRadius: '10px',
                 borderBottom: 'none',

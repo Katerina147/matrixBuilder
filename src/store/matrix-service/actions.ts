@@ -9,23 +9,13 @@ export const createMatrix =
         const matrix = generateMatrix(columns, rows);
         return dispatch({
             type: MATRIX_ACTION_TYPES.CREATE,
-            payload: matrix
+            payload: { columns, rows, matrix }
         });
     };
 
-export const setColumns = (columns: number): ActionTypes => ({
-    type: MATRIX_ACTION_TYPES.SET_MATRIX_COLUMNS,
-    payload: columns
-});
-
-export const setRows = (rows: number): ActionTypes => ({
-    type: MATRIX_ACTION_TYPES.SET_MATRIX_ROWS,
-    payload: rows
-});
-
 export const setCells = (cells: number): ActionTypes => ({
     type: MATRIX_ACTION_TYPES.SET_MATRIX_CELLS,
-    payload: cells
+    payload: cells as number
 });
 
 export const cellIncrement = (id: string): ActionTypes => ({
@@ -41,4 +31,14 @@ export const getNearestCell = (id: string, amount: number): ActionTypes => ({
 export const clearNearestCell = (): ActionTypes => ({
     type: MATRIX_ACTION_TYPES.CLEAR_NEAREST_CELLS,
     payload: undefined
+});
+
+export const addMatrixRow = (columns: number): ActionTypes => ({
+    type: MATRIX_ACTION_TYPES.ADD_MATRIX_ROW,
+    payload: columns
+});
+
+export const deleteMatrixRow = (index: number): ActionTypes => ({
+    type: MATRIX_ACTION_TYPES.DELETE_MATRIX_ROW,
+    payload: index
 });

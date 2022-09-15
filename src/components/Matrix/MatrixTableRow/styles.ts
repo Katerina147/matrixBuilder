@@ -9,7 +9,8 @@ export const MUI_MATRIX_BODY_STYLES = {
     },
     nearestCell: {
         '&.MuiTableCell-root': {
-            backgroundColor: theme.palette.cellYellow
+            backgroundColor: theme.palette.cellYellow,
+            color: theme.palette.cellTextColor
         }
     }
 };

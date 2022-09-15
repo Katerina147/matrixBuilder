@@ -1,6 +1,6 @@
-import { IMatrixParameters, MatrixData } from './matrix.interfaces';
+import { IMatrixParameters, MatrixRow } from './matrix.interfaces';
 
 export interface IMatrixReducer {
-    matrix: MatrixData;
+    matrix: MatrixRow[];
     matrixParameters: IMatrixParameters;
 }

@@ -1,19 +1,10 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Box, Container } from '@mui/system';
 import { makeStyles } from '@mui/styles';
 import { Grid } from '@mui/material';
-import {
-    createMatrix,
-    setCells,
-    setColumns,
-    setRows
-} from 'store/matrix-service/actions';
-import {
-    getCellsSelector,
-    getColumnsSelector,
-    getRowsSelector
-} from 'store/matrix-service/selectors';
+import { createMatrix, setCells } from 'store/matrix-service/actions';
+import { getCellsSelector } from 'store/matrix-service/selectors';
 import { CustomTypography, CustomButton, CustomInput } from 'components/shared';
 import { MUI_HEADER_STYLES } from './styles';
 
@@ -22,20 +13,12 @@ const useStyles = makeStyles(MUI_HEADER_STYLES);
 export const Header: FC = () => {
     const classes = useStyles();
 
-    const columns = useSelector(getColumnsSelector);
-    const rows = useSelector(getRowsSelector);
-    const cells = useSelector(getCellsSelector);
-
     const dispatch = useDispatch();
 
-    const handleColumnsChange = (value: string | number) =>
-        dispatch(setColumns(value as number));
+    const [columns, setColumns] = useState(0);
+    const [rows, setRows] = useState(0);
 
-    const handleRowsChange = (value: string | number) =>
-        dispatch(setRows(value as number));
-
-    const handleCellsChange = (value: string | number) =>
-        dispatch(setCells(value as number));
+    const cells = useSelector(getCellsSelector);
 
     const handleCreateMatrix = () => {
         dispatch(createMatrix(columns, rows));
@@ -67,8 +50,8 @@ export const Header: FC = () => {
                         <Grid item xs={6}>
                             <CustomInput
                                 name="column"
+                                onChange={(e) => setColumns(+e.target.value)}
                                 value={columns}
-                                onChange={handleColumnsChange}
                                 type="number"
                                 className={classes.customInput}
                                 InputLabelProps={{
@@ -93,7 +76,7 @@ export const Header: FC = () => {
                             <CustomInput
                                 name="rows"
                                 value={rows}
-                                onChange={handleRowsChange}
+                                onChange={(e) => setRows(+e.target.value)}
                                 type="number"
                                 className={classes.customInput}
                                 InputLabelProps={{
@@ -118,7 +101,9 @@ export const Header: FC = () => {
                             <CustomInput
                                 name="cells"
                                 value={cells}
-                                onChange={handleCellsChange}
+                                onChange={(e) =>
+                                    dispatch(setCells(+e.target.value))
+                                }
                                 type="number"
                                 className={classes.customInput}
                                 InputLabelProps={{
@@ -129,7 +114,7 @@ export const Header: FC = () => {
                     </Grid>
                 </Container>
                 <CustomButton
-                    className={classes.customButton}
+                    className={classes.createMatrixButton}
                     label="Create matrix"
                     onClick={handleCreateMatrix}
                 />

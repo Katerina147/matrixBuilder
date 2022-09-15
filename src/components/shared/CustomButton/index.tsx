@@ -4,7 +4,7 @@ import { Button } from '@mui/material';
 interface CustomButtonProps {
     label: string;
     className?: string;
-    onClick: () => void;
+    onClick?: () => void;
 }
 
 export const CustomButton: FC<CustomButtonProps> = ({

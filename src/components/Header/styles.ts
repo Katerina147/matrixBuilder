@@ -5,13 +5,13 @@ export const MUI_HEADER_STYLES = {
         backgroundColor: theme.palette.primary,
         padding: '20px'
     },
-    customButton: {
+    createMatrixButton: {
         '&.MuiButton-root': {
-            margin: '0px auto',
+            margin: '0 auto',
             display: 'block',
             padding: '0 30px',
             border: 0,
-            color: 'red',
+            color: theme.palette.mainRed,
             fontWeight: 'bold',
             height: 48,
             outline: 'none',

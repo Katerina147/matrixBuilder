@@ -5,5 +5,7 @@ export enum MATRIX_ACTION_TYPES {
     SET_MATRIX_CELLS = '[MATRIX] SetCells',
     INCREMENT_CELL = '[MATRIX] IncrementCell',
     GET_NEAREST_CELLS = '[MATRIX] GetNearestCells',
-    CLEAR_NEAREST_CELLS = '[MATRIX] ClearNearestCells'
+    CLEAR_NEAREST_CELLS = '[MATRIX] ClearNearestCells',
+    ADD_MATRIX_ROW = '[MATRIX] AddMatrixRow',
+    DELETE_MATRIX_ROW = '[MATRIX] DeleteMatrixRow'
 }
