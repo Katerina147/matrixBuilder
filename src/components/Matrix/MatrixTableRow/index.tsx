@@ -10,15 +10,16 @@ import { MUI_ROW_STYLE } from 'utils/constans/style/table-row';
 import {
     cellIncrement,
     getNearestCell,
-    clearNearestCell
+    clearNearestCell,
+    deleteMatrixRow
 } from 'store/matrix-service/actions';
 import { CustomTableCell } from 'components/shared';
 import { MUI_MATRIX_BODY_STYLES } from './styles';
 
 interface MatrixTableRowProps {
     data: MatrixRow;
+    rowIndex?: number;
     rowPrefix: number | string;
-    isDeletable?: boolean;
     cellClassName?: string;
 }
 
@@ -30,8 +31,8 @@ const useStyles = makeStyles({
 
 export const MatrixTableRow: FC<MatrixTableRowProps> = ({
     data,
+    rowIndex,
     rowPrefix,
-    isDeletable,
     cellClassName
 }) => {
     const classes = useStyles();
@@ -39,7 +40,7 @@ export const MatrixTableRow: FC<MatrixTableRowProps> = ({
     const dispatch = useDispatch();
 
     const matrixRowSum: number = data
-        .map((data: IMatrixCell) => data.amount)
+        .map((data: IMatrixCell) => data?.amount)
         .reduce((sum: number, currentValue: number) => sum + currentValue, 0);
 
     return (
@@ -65,7 +66,14 @@ export const MatrixTableRow: FC<MatrixTableRowProps> = ({
                 className={classes.cellGreen}
                 value={matrixRowSum}
             />
-            {isDeletable && <CustomButtonIcon icon={<ClearIcon />} />}
+            {rowIndex !== undefined && (
+                <CustomTableCell>
+                    <CustomButtonIcon
+                        onClick={() => dispatch(deleteMatrixRow(rowIndex))}
+                        icon={<ClearIcon />}
+                    />
+                </CustomTableCell>
+            )}
         </TableRow>
     );
 };

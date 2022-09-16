@@ -11,5 +11,3 @@ export interface IMatrixCell {
 }
 
 export type MatrixRow = IMatrixCell[];
-
-export type MatrixData = MatrixRow[];

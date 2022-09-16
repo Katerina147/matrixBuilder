@@ -1,7 +1,7 @@
 import { Store } from 'store';
-import { MatrixData } from 'utils/types/matrix.interfaces';
+import { MatrixRow } from 'utils/types/matrix.interfaces';
 
-export const getMartrixSelector = (store: Store): MatrixData =>
+export const getMartrixSelector = (store: Store): MatrixRow[] =>
     store.matrix.matrix;
 
 export const getColumnsSelector = (store: Store): number =>

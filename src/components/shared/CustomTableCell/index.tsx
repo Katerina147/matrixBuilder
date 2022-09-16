@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import clsx from 'clsx';
 import { TableCell } from '@mui/material';
 import { makeStyles } from '@mui/styles';
@@ -10,6 +10,7 @@ interface CustomTableCellProps {
     onClick?: () => void;
     onMouseEnter?: () => void;
     onMouseLeave?: () => void;
+    children?: ReactNode;
 }
 
 const useStyles = makeStyles(MUI_MATRIX_TABLECELL_STYLES);
@@ -19,7 +20,8 @@ export const CustomTableCell: FC<CustomTableCellProps> = ({
     className,
     onClick,
     onMouseEnter,
-    onMouseLeave
+    onMouseLeave,
+    children
 }) => {
     const classes = useStyles();
     return (
@@ -29,7 +31,7 @@ export const CustomTableCell: FC<CustomTableCellProps> = ({
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
         >
-            {value}
+            {value || children}
         </TableCell>
     );
 };
