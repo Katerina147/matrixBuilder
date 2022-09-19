@@ -5,3 +5,6 @@ export const getTableHeadings = (columns: string | number): string[] => {
 
     return ['№', ...headings, 'Sum'];
 };
+
+export const calculatePercent = (amount: number, rowSum: number) =>
+    Math.round((amount * 100) / rowSum);

@@ -5,6 +5,7 @@ import { ActionTypes } from './types';
 
 const initialState: IMatrixReducer = {
     matrix: [],
+    nearestCells: [],
     matrixParameters: {
         columns: 0,
         rows: 0,
@@ -65,26 +66,14 @@ const matrixReducer = (
             );
             return {
                 ...state,
-                matrix: state.matrix.map((row: MatrixRow) =>
-                    row.map((cell: IMatrixCell) => ({
-                        ...cell,
-                        isNearest: nearestCells.some(
-                            (item: IMatrixCell) => item.id === cell.id
-                        )
-                    }))
-                )
+                nearestCells: [...nearestCells]
             };
         }
 
         case MATRIX_ACTION_TYPES.CLEAR_NEAREST_CELLS:
             return {
                 ...state,
-                matrix: state.matrix.map((row: MatrixRow) =>
-                    row.map((cell: IMatrixCell) => ({
-                        ...cell,
-                        isNearest: false
-                    }))
-                )
+                nearestCells: []
             };
 
         case MATRIX_ACTION_TYPES.ADD_MATRIX_ROW: {
